@@ -1,3 +1,4 @@
+# O menu exibe as opções disponíveis para o usuário.
 menu = """
 
 =============== \033[1;;43m BancoPy \033[m =============== 
@@ -10,7 +11,8 @@ menu = """
 =========================================
 => """
 
-#Validação do input
+# Função para validar se a entrada do usuário é um número válido (inteiro ou ponto flutuante)
+
 def verificar_numero_valido(entrada):
     # Verifica cada caractere da entrada
     for char in entrada:
@@ -24,21 +26,21 @@ def verificar_numero_valido(entrada):
     except ValueError:
         return False
 
-#Variaveis
+# Variáveis para armazenar informações sobre a conta
 saldo = 0
 limite = 500
 extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
+# Loop principal para o menu interativo
 while True:
-
+    # Exibe o menu e aguarda a entrada do usuário
     opcao = input(menu)
-
+    # Opção para depositar dinheiro na conta
     if opcao == "d":
-
         entrada = input("Informe o valor do depósito: ")
-
+        # Verifica se a entrada é um número válido
         if verificar_numero_valido(entrada):
 
             valor = float(entrada)
@@ -53,7 +55,7 @@ while True:
         else:
             print("\033[31mOperação falhou!\033[m O valor informado é inválido.")
 
-
+    # Opção para sacar dinheiro da conta
     elif opcao == "s":
         valor = float(input("Informe o valor do saque: "))
 
@@ -79,15 +81,16 @@ while True:
 
         else:
             print("Operação falhou! O valor informado é inválido.")
-
+            
+    # Opção para exibir o extrato da conta
     elif opcao == "e":
         print("\n================\033[1;;43m EXTRATO \033[m================")
         print("Não foram realizadas movimentações." if not extrato else extrato)
         print(f"\n\033[1;;42m Saldo: R$ {saldo:.2f}\033[m")
         print("=========================================")
-
+     # Opção para sair do programa
     elif opcao == "q":
         break
-
+    # Caso o usuário digite uma opção inválida
     else:
         print("Operação inválida, por favor selecione novamente a operação desejada.")
