@@ -1,6 +1,6 @@
 menu = """
 
-########## BancoPy ##########  
+########## \033[1;;43m BancoPy \033[m ##########  
 
 [d] Depositar
 [s] Sacar
@@ -28,7 +28,7 @@ while True:
             extrato += f"\033[32mDepósito: R$ {valor:.2f}\n\033[m"
 
         else:
-            print("Operação falhou! O valor informado é inválido.")
+            print("\033[31mOperação falhou!\033[m O valor informado é inválido.")
 
     elif opcao == "s":
         valor = float(input("Informe o valor do saque: "))
@@ -40,13 +40,13 @@ while True:
         excedeu_saques = numero_saques >= LIMITE_SAQUES
 
         if excedeu_saldo:
-            print("Operação falhou! Você não tem saldo suficiente.")
+            print("\033[31mOperação falhou!\033[m Você não tem saldo suficiente.")
 
         elif excedeu_limite:
-            print("Operação falhou! O valor do saque excede o limite.")
+            print("\033[31mOperação falhou!\033[m O valor do saque excede o limite.")
 
         elif excedeu_saques:
-            print("Operação falhou! Número máximo de saques excedido.")
+            print("\033[31mOperação falhou!\033[m Número máximo de saques excedido.")
 
         elif valor > 0:
             saldo -= valor
@@ -59,7 +59,7 @@ while True:
     elif opcao == "e":
         print("\n================ EXTRATO ================")
         print("Não foram realizadas movimentações." if not extrato else extrato)
-        print(f"\nSaldo: R$ {saldo:.2f}")
+        print(f"\n\033[1;;42m Saldo: R$ {saldo:.2f}\033[m")
         print("==========================================")
 
     elif opcao == "q":
