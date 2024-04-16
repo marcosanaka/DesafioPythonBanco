@@ -1,15 +1,23 @@
 # O menu exibe as opções disponíveis para o usuário.
-menu = """
+import textwrap
 
-=============== \033[1;;43m BancoPy \033[m =============== 
+def menu():
+    menu = """\n
 
-[d] Depositar
-[s] Sacar
-[e] Extrato
-[q] Sair
+    =============== \033[1;;43m BancoPy \033[m =============== 
 
-=========================================
-=> """
+    [d]\tDepositar
+    [s]\tSacar
+    [e]\tExtrato
+    [nc]\tNova Conta
+    [lc]\tListar Contas
+    [nu]\tNovo Usuário
+    [q]\tSair
+
+    =========================================
+    => """
+    return input(textwrap.dedent(menu))
+
 
 # Função para validar se a entrada do usuário é um número válido (inteiro ou ponto flutuante)
 
@@ -36,7 +44,8 @@ LIMITE_SAQUES = 3
 # Loop principal para o menu interativo
 while True:
     # Exibe o menu e aguarda a entrada do usuário
-    opcao = input(menu)
+    
+    opcao = menu()
     # Opção para depositar dinheiro na conta
     if opcao == "d":
         entrada = input("Informe o valor do depósito: ")
